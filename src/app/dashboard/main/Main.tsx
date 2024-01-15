@@ -1,10 +1,12 @@
-import Container from '@/app/components/container/Container';
 import React from 'react';
-import cls from "./Main.module.scss";
+import Container from '@/app/components/container/Container';
 import Image from 'next/image';
 import MainTopSlider from '@/app/components/mainTopSlider/MainTopSlider';
-import { MainTopSliderList } from '@/app/utils/MainTopSliderLIst';
 import AboutUs from './aboutUs/AboutUs';
+import DirectionList from './directionList/DirectionList';
+import { MainTopSliderList } from '@/app/utils/MainTopSliderLIst';
+
+import cls from "./Main.module.scss";
 
 const Main = () => {
   return (
@@ -33,6 +35,9 @@ const Main = () => {
         </section>
         <section>
           <AboutUs />
+        </section>
+        <section>
+          <DirectionList />
         </section>
       </Container>
     </main>
