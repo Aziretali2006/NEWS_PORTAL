@@ -1,0 +1,53 @@
+.sliderContainer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+
+  .slide {
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+    @media (max-width:425px) {
+      max-width: 100%;
+      margin: 0 auto;
+      height:450px ;
+    }
+
+    @media (max-width: 375px) {
+      max-width: 100%;
+      height: 350px;
+    }
+  }
+  .active {
+    display: block;
+  }
+}
+
+.dotsContainer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  @media (max-width: 1024px) {
+    margin-bottom: 50px;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #C4C4C4;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+  }
+
+  .activeDot {
+    background-color: var(--btn-and-leaves-color);
+    width: 30px;
+    height: 5px;
+    border-radius: 20%;
+  }
+}
+

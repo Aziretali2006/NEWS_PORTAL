@@ -56,19 +56,19 @@
 
 @media (min-width: 1827px) {
   .header {
-    min-width: 100%;
+    // min-width: 100%;
   }
 }
 
 @media (min-width: 1440px) {
   .header {
-    min-width: 100%;
+    max-width: 100%;
 
     .navbar  {
       display: flex;
       gap: 60px;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
 
       .btn {
         width: 150px;

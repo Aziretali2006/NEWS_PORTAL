@@ -14,7 +14,7 @@ const Footer = () => {
           <div className={cls.logo_footer}>
             <Image
               alt='ENE_balaga_tirek_RU_final' 
-              src={"/image/ENE_balaga_tirek_RU_final.png"} 
+              src={"/image/ENE_balaga_tirek_RU.png"} 
               width={184} 
               height={67}
             />

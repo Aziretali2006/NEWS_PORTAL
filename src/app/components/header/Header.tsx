@@ -30,7 +30,7 @@ const Header = (item: any) => {
           <div className={cls.logo_and_language}>
             <Image 
               alt='ENE_balaga_tirek_RU_final' 
-              src={"/image/ENE_balaga_tirek_RU_final.png"} 
+              src={"/image/ENE_balaga_tirek_RU.png"} 
               width={184} 
               height={67}
               className={cls.img}
