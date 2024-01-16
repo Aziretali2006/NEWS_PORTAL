@@ -27,10 +27,24 @@
   background: none;
   display: flex;
   justify-content: flex-end;
+  margin: auto;
   color: #4A99D3;
   font-size: 20px;
   cursor: pointer;
 }
+
+.icon {
+  position: relative;
+  animation-name: active_svg;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  color: #4A99D3;
+  font-size: 25px;
+  width: 0px;
+}
+
 
 .lastNews {
   margin-top: 70px;
@@ -48,3 +62,18 @@
   margin-top: 20px;
   color: #505050;
 }
+
+.icons {
+  position: absolute;
+}
+
+@keyframes active_svg {
+  0% {
+    left: 230px;
+    top: -55px;
+  }
+  100% {
+    left: 265px;
+    top: -35px;
+  }
+};

@@ -4,6 +4,7 @@ import React, { FC } from 'react';
 import cls from "../LastNews.module.css";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { FaArrowRightLong } from 'react-icons/fa6';
 
 interface ICardProps {
   object: ICardLastNews[]
@@ -50,6 +51,9 @@ const CardLastNews: FC<ICardProps> = ({object}) => {
                   <p>{item.text}</p>
                 </div>
                 <button>Подробнее</button>
+                <div className={cls.icon}>
+                  <FaArrowRightLong />
+                </div>
               </div>
             ))
           }
