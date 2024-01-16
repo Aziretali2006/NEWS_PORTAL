@@ -7,6 +7,7 @@ import DirectionList from './directionList/DirectionList';
 import { MainTopSliderList } from '@/app/utils/MainTopSliderLIst';
 
 import cls from "./Main.module.scss";
+import LastNews from './ourProjects/LastNews';
 
 const Main = () => {
   return (
@@ -38,6 +39,9 @@ const Main = () => {
         </section>
         <section>
           <DirectionList />
+        </section>
+        <section>
+          <LastNews />
         </section>
       </Container>
     </main>
