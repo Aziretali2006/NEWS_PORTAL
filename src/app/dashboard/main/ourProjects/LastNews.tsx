@@ -16,13 +16,13 @@ const LastNews = () => {
       <div>
         <CardLastNews object={CardLastNewsObject}/>
       </div>
-      <Image 
+      {/* <Image 
         src={"/image/Ellipse 7.png"}
         width={30}
         height={30} 
         alt=''
         className={cls.icons}
-      />
+      /> */}
     </section>
   )
 }

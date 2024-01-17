@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+const nextConfig = {
+  images: {
+    domains: ['go.2gis.com'],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
