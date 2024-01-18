@@ -9,3 +9,8 @@ export interface ILanguageList {
   label: string,
   img: string
 }
+
+export interface ICategoryList {
+  id: number,
+  title: string
+}
