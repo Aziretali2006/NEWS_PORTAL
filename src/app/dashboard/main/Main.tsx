@@ -8,10 +8,10 @@ import AboutUs from './aboutUs/AboutUs';
 import DirectionList from './directionList/DirectionList';
 import LastNews from './ourProjects/LastNews';
 import Gallery from './gallery/Gallery';
+import OurContacts from './ourContacts/OurContacts';
 import { MainTopSliderList } from '@/app/utils/MainTopSliderLIst';
 
 import cls from "./Main.module.scss";
-import OurContacts from './ourContacts/OurContacts';
 
 const Main = () => {
 

@@ -66,8 +66,13 @@
     }
   }
 
+  @media (max-width: 1024px) {
+    .contacts {
+      overflow: scroll;
+    }
+  }
+
   .contacts {
     margin-top: 150px;
-    overflow: scroll;
   }
 }

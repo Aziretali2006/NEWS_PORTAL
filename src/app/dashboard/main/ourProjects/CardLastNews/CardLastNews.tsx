@@ -1,10 +1,11 @@
-import { ICardLastNews } from '@/app/interface/LastNewsCardListType';
-import Image from 'next/image';
 import React, { FC } from 'react';
-import cls from "../LastNews.module.css";
+import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import { ICardLastNews } from '@/app/interface/LastNewsCardListType';
 import { FaArrowRightLong } from 'react-icons/fa6';
+
+import 'react-multi-carousel/lib/styles.css';
+import cls from "../LastNews.module.css";
 
 interface ICardProps {
   object: ICardLastNews[]
@@ -30,7 +31,6 @@ const CardLastNews: FC<ICardProps> = ({object}) => {
     }
   };
   
-
   return (
     <section className={cls.card}>
       <div className={cls.row}>

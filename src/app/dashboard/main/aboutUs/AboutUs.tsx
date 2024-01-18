@@ -1,6 +1,7 @@
 import React from 'react';
-import cls from "./AboutUs.module.scss";
 import Image from 'next/image';
+
+import cls from "./AboutUs.module.scss";
 
 const AboutUs = () => {
   return (

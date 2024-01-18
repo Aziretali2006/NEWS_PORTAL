@@ -1,8 +1,9 @@
 import React from 'react';
-import cls from "./OurContacts.module.scss";
+import Image from 'next/image';
 import { RiMapPinLine } from "react-icons/ri";
 import { MdOutlineEmail } from "react-icons/md";
-import Image from 'next/image';
+
+import cls from "./OurContacts.module.scss";
 
 const OurContacts = () => {
 

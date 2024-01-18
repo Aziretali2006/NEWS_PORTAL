@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { DirectionListLeft, DirectionListRight } from '@/app/utils/DirectionList';
+
 import cls from "./DirectionList.module.scss";
 
 const DirectionList = () => {

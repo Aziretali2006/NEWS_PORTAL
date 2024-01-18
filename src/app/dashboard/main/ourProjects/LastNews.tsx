@@ -1,9 +1,9 @@
 import React from 'react';
 import CardLastNews from './CardLastNews/CardLastNews';
+import Image from 'next/image';
 import { CardLastNewsObject } from '@/app/utils/LastNewsCardList';
 
 import cls from "./LastNews.module.css";
-import Image from 'next/image';
 
 const LastNews = () => {
 
@@ -16,13 +16,13 @@ const LastNews = () => {
       <div>
         <CardLastNews object={CardLastNewsObject}/>
       </div>
-      {/* <Image 
+      <Image 
         src={"/image/Ellipse 7.png"}
         width={30}
         height={30} 
         alt=''
         className={cls.icons}
-      /> */}
+      />
     </section>
   )
 }

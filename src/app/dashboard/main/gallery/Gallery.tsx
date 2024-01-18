@@ -1,6 +1,7 @@
 import React from 'react';
-import cls from "./Gallery.module.scss";
 import Image from 'next/image';
+
+import cls from "./Gallery.module.scss";
 
 const Gallery = () => {
   return (
