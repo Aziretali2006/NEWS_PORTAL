@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/app/hook/reduxHooks';
 import { clearProjectId, setProjectId } from '@/app/store/ProjectSlice';
+import LastNews from '../LastNews';
 
 interface ICardProps {
   object: ICardLastNews[]
@@ -36,7 +37,7 @@ const CardLastNews: FC<ICardProps> = ({object}) => {
   };
 
   const dispatch = useAppDispatch();
-  const {selectedId} = useAppSelector(state => state.ProjectSlice)
+  const {selectedId , selectedCategory} = useAppSelector(state => state.ProjectSlice)
 
   const handleButtonClick = (id: number) => {
     dispatch(setProjectId(id));
@@ -51,20 +52,20 @@ const CardLastNews: FC<ICardProps> = ({object}) => {
       <div className={cls.row}>
         <div>
           {selectedId !== null ? (
-            <div className={cls.card_block}>
+            <div className={cls.selected_card_block}>
               {/* Отображение выбранного проекта */}
-              <Image 
-                src={object[selectedId].img}
-                width={420}
-                height={330}
-                alt=''
-                className={cls.image}
-              />
-              <div className={cls.description}>
-                <p>{object[selectedId].data}</p>
                 <h2>{object[selectedId].title}</h2>
-                <button onClick={handleCloseClick}>Закрыть</button>
-              </div>
+                <Image 
+                  src={object[selectedId].img}
+                  width={420}
+                  height={330}
+                  alt=''
+                  className={cls.selected_image}
+                />
+                <div className={cls.selected_description}>
+                  <p>{object[selectedId].text}</p>
+                  <button onClick={handleCloseClick}>Закрыть</button>
+                </div>
             </div>
           ) : (
             // Отображение карусели проектов
@@ -81,7 +82,10 @@ const CardLastNews: FC<ICardProps> = ({object}) => {
                   <div className={cls.description}>
                     <p>{item.data}</p>
                     <h2>{item.title}</h2>
-                    <button onClick={() => handleButtonClick(index)}>Подробнее</button>
+                    {
+                      selectedCategory !== null 
+                      && <button onClick={() => handleButtonClick(index)}>Подробнее</button>
+                    }
                   </div>
                 </div>
               ))}
