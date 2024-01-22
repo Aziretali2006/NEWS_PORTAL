@@ -1,10 +1,12 @@
 "use client"
 
 import React from 'react';
-import cls from "./Category.module.scss"
-import { CategoryList } from '@/app/utils/CategoryList';
 import Select from 'react-select';
-import { ICategoryList } from '@/app/interface/HeaderType';
+import { CategoryList } from '@/app/utils/CategoryList';
+import cls from "./Category.module.scss"
+import { useAppDispatch, useAppSelector } from '@/app/hook/reduxHooks';
+import { setCategory } from '@/app/store/ProjectSlice';
+import EducationComponent from '@/app/components/categoryComponents/educationComp/EducationComponent';
 
 const options: { value: string; label: string }[] = CategoryList.map((item) => ({
   value: item.title,
@@ -12,12 +14,12 @@ const options: { value: string; label: string }[] = CategoryList.map((item) => (
 }));
 
 const Category = () => {
-  const [selectedCategory, setSelectedCategory] = React.useState<string | null>(null);
+  const dispatch = useAppDispatch();
+  const {selectedCategory} = useAppSelector(state => state.ProjectSlice)
   const [isOpen, setIsOpen] = React.useState<boolean>(false)
-  // const [selectedOption, setSelectedOption] = React.useState<string | null>(null);
 
   const categoryContent: Record<string, JSX.Element> = {
-    'Образование': <div><h2>HEllO</h2></div>,
+    'Образование': <EducationComponent />,
     'Здравоохранение': <div><h2>AZIRETALI</h2></div>,
     'Экология': <div><h2>Sharapov</h2></div>,
     'Культура': <div><h2>Культура</h2></div>,
@@ -26,37 +28,30 @@ const Category = () => {
     'Экономическая благосостояние': <div><h2>Экономическая балогосостояние</h2></div>
   };
 
-  function ChooseCategory(categoryTitle: string) {
-    setSelectedCategory((prevSelectedCategory) => {
-      setIsOpen(false)
-      return prevSelectedCategory === categoryTitle ? null : categoryTitle;
-    });
-  }
-
-  function ShowAll() {
-    setIsOpen(true)
-    setSelectedCategory(null)
-  }
+  const ChooseCategory = (categoryTitle: string) => {
+    const newSelectedCategory = selectedCategory === categoryTitle ? null : categoryTitle; // Этот код делает toggle
+    dispatch(setCategory(newSelectedCategory));
+  };
 
   return (
     <div className={cls.category}>
       <ul className={cls.category_selected}>
-      <Select
-        className={cls.select}
-        defaultValue={selectedCategory ? { value: selectedCategory, label: selectedCategory } : null}
-        onChange={(selectedOptionValue: { value: string; label: string } | null) => {
-          setSelectedCategory(selectedOptionValue?.value || null);
-        }}
-        options={options}
-        styles={{
-          option: (provided, state) => ({
-            ...provided,
-            backgroundColor: state.isSelected ? '#14AD02' : provided.backgroundColor,
-            color: state.isSelected ? 'white' : provided.color, // Измените цвет текста, если элемент выбран
-          }),
-        }}
-      />
-        {isOpen === false &&  CategoryList.map((item) => (
+        <Select
+          className={cls.select}
+          defaultValue={selectedCategory ? { value: selectedCategory, label: selectedCategory } : null}
+          onChange={(selectedOptionValue: { value: string; label: string } | null) => {
+            dispatch(setCategory(selectedOptionValue?.value || null));
+          }}
+          options={options}
+          styles={{
+            option: (provided, state) => ({
+              ...provided,
+              backgroundColor: state.isSelected ? '#14AD02' : provided.backgroundColor,
+              color: state.isSelected ? 'white' : provided.color,
+            }),
+          }}
+        />
+        {(isOpen === false) &&  CategoryList.map((item) => (
           <li
             className={`${cls.item} ${selectedCategory === item.title && cls.active} ${isOpen && cls.showAll}`}
             key={item.id}
