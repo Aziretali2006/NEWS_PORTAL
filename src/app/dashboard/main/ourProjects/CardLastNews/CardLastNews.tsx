@@ -1,18 +1,17 @@
 import React, { FC } from 'react';
 import Image from 'next/image';
 import Carousel from 'react-multi-carousel';
+import SelectedCard from '../selectedCard/SelectedCard';
+import ScrollCard from '@/app/components/scrollCard/ScrollCard';
 import { ICardLastNews } from '@/app/interface/LastNewsCardListType';
-import { FaArrowRightLong } from 'react-icons/fa6';
-
-import 'react-multi-carousel/lib/styles.css';
-import cls from "../LastNews.module.css";
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { useAppDispatch, useAppSelector } from '@/app/hook/reduxHooks';
-import { clearProjectId, setProjectId } from '@/app/store/ProjectSlice';
-import LastNews from '../LastNews';
+import {setProjectId } from '@/app/store/ProjectSlice';
+import { CardLastNewsObject } from '@/app/utils/LastNewsCardList';
+import 'react-multi-carousel/lib/styles.css';
 
-interface ICardProps {
+import cls from "./CardLastNews.module.scss";
+
+export interface ICardProps {
   object: ICardLastNews[]
 }
 
@@ -43,29 +42,14 @@ const CardLastNews: FC<ICardProps> = ({object}) => {
     dispatch(setProjectId(id));
   };
 
-  const handleCloseClick = () => {
-    dispatch(clearProjectId());
-  };
-
   return (
-    <section className={cls.card}>
+    <section className={cls.card_last_news}>
       <div className={cls.row}>
         <div>
           {selectedId !== null ? (
-            <div className={cls.selected_card_block}>
-              {/* Отображение выбранного проекта */}
-                <h2>{object[selectedId].title}</h2>
-                <Image 
-                  src={object[selectedId].img}
-                  width={420}
-                  height={330}
-                  alt=''
-                  className={cls.selected_image}
-                />
-                <div className={cls.selected_description}>
-                  <p>{object[selectedId].text}</p>
-                  <button onClick={handleCloseClick}>Закрыть</button>
-                </div>
+            <div className={cls.inline_block}>
+              <SelectedCard object={CardLastNewsObject}/>
+              <ScrollCard object={CardLastNewsObject}/>
             </div>
           ) : (
             // Отображение карусели проектов
@@ -95,6 +79,6 @@ const CardLastNews: FC<ICardProps> = ({object}) => {
       </div>
     </section>
   )
-  }
+}
 
 export default CardLastNews;

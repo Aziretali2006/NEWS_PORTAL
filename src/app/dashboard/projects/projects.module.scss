@@ -1,7 +1,6 @@
 
 .projects {
-  display: flex;
-  &_content {
+  .projects_content {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
