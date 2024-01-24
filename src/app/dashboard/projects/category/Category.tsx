@@ -2,11 +2,12 @@
 
 import React from 'react';
 import Select from 'react-select';
+import EducationComponent from '@/app/components/categoryComponents/educationComp/EducationComponent';
 import { CategoryList } from '@/app/utils/CategoryList';
-import cls from "./Category.module.scss"
 import { useAppDispatch, useAppSelector } from '@/app/hook/reduxHooks';
 import { setCategory } from '@/app/store/ProjectSlice';
-import EducationComponent from '@/app/components/categoryComponents/educationComp/EducationComponent';
+
+import cls from "./Category.module.scss"
 
 const options: { value: string; label: string }[] = CategoryList.map((item) => ({
   value: item.title,

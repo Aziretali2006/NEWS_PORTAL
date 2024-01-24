@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   selectedCategory: null,
-  selectedId: null
+  selectedId: null,
 }
 
 export const ProjectSlice = createSlice({

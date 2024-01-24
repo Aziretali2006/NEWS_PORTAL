@@ -1,27 +1,23 @@
 "use client"
 
 import React from 'react';
-import cls from "./Header.module.scss";
 import Image from 'next/image';
+import Container from '../container/Container';
 import ReactFlagsSelect from 'react-flags-select';
 import { HeaderList } from '@/app/utils/List';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import Container from '../container/Container';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 
-const Header = (item: any) => {
-  // const router = useRouter();
+import cls from "./Header.module.scss";
+
+const Header = () => {
   const savedSelected = localStorage.getItem('selectedLanguage') || '';
   const [selected, setSelected] = React.useState<string>(savedSelected);
-  const [active , setActive] = React.useState<boolean>(false)
+  const [active , setActive] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    localStorage.setItem('selectedLanguage', selected);
+      localStorage.setItem('selectedLanguage', selected);
   }, [selected]);
-
-  const classnames: string | string[] = [cls.item ,cls.active]
 
   return (
     <header className={cls.header}>
@@ -45,14 +41,13 @@ const Header = (item: any) => {
               selectButtonClassName={cls.flags_button}
             />
           </div>
-          <div className={active ? Array.isArray(classnames) ? classnames.join(' ') : classnames! : cls.item}>
+          <ul className={cls.item}>
             {HeaderList.map(item => (
-              <Link key={item.id} href={item.to}>
-                {item.title}
-                {/* <a href="" style={{color: router.pathname === item.to ? "red" : "black"}}></a> */}
-              </Link>
+              <li key={item.id} >
+                <a className={window.location.pathname === item.to ? cls.active : ''} href={item.to}>{item.title}</a>
+              </li>
             ))}
-          </div>
+          </ul>
           <button className={cls.btn}>Обратиться</button>
           <div onClick={() => setActive(!active)} className={cls.burger_el}>
             {active ? <IoMdClose size={45}/> : <RxHamburgerMenu size={45}/>}

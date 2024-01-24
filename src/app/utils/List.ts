@@ -14,17 +14,17 @@ export const HeaderList: IHeaderList[] = [
   {
     id:3, 
     title: "Проект",
-    to: "dashboard/projects"
+    to: "/dashboard/projects"
   },
   {
     id:4, 
     title: "Обращение",
-    to: "dashboard/appeal",
+    to: "/dashboard/appeal",
   },
   {
     id:5, 
     title: "Фотогалерея",
-    to: "dashboard/photoGallery",
+    to: "/dashboard/photoGallery",
   },
   {
     id:6, 
