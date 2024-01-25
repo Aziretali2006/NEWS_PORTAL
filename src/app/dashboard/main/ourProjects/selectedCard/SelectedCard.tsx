@@ -11,7 +11,6 @@ const SelectedCard: FC<ICardProps> = ({object}) => {
   const {selectedId} = useAppSelector(state => state.ProjectSlice);
   const dispatch = useAppDispatch();
 
-  
   const handleCloseClick = () => {
     dispatch(clearProjectId());
   };

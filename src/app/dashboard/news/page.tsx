@@ -5,6 +5,7 @@ import { NewsSliderListObject } from '@/app/utils/NewsSliderList';
 import React from 'react'
 import cls from "./news.module.scss";
 import NewsTopSlider from '@/app/components/newsTopSlider/NewsTopSlider';
+import Footer from '@/app/components/footer/Footer';
 
 const News = () => {
   return (
@@ -15,6 +16,7 @@ const News = () => {
         <div className={cls.slider}>
           <NewsTopSlider item={NewsSliderListObject}/>
         </div>
+        <Footer />
       </div>
     </Container>
   )

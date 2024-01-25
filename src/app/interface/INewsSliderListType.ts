@@ -4,5 +4,6 @@ export interface INewsSliderListType {
   title: string,
   text: string,
   data: string,
-  img: string
+  img: string,
+  name: string
 }
