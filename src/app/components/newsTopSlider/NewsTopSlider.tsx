@@ -2,16 +2,19 @@
 
 import Image from 'next/image';
 import React from 'react';
-import cls from "./MainSlider.module.scss";
+import cls from "./NewsTopSlider.module.scss";
 
 interface MainTopSliderProps {
   item: Array<{
     id: number;
     img: string;
+    text: string;
+    title: string;
+    data:string ;
   }>;
 }
 
-const MainTopSlider: React.FC<MainTopSliderProps> = ({ item }) => {
+const NewsTopSlider: React.FC<MainTopSliderProps> = ({ item }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
 
   const goToSlide = (index: any) => {
@@ -31,33 +34,38 @@ const MainTopSlider: React.FC<MainTopSliderProps> = ({ item }) => {
 
   return (
     <div className={cls.sliderContainer}>
-      {item.map((item, index) => (
+      {item.map((i, index) => (
         <div
           key={index}
           className={cls.inline_content}
         >
           <Image
-            src={item.img}
+            src={i.img}
             key={index}
-            width={800}
-            height={725}
+            width={1100}
+            height={600}
             alt='main/img'
             className={`${cls.slide} ${index === currentIndex ? cls.active : ''}` }
           />
+          <div key={index} className={`${cls.description} ${index === currentIndex ? cls.active : ''}`}>
+            <h4>{i.data}</h4>
+            <h3>{i.title}</h3>
+            <p>{i.text}</p>
+            <div className={cls.dotsContainer}>
+              {item.map((_, index) => (
+                <div
+                  key={index}
+                  className={`${cls.dot} ${index === currentIndex ? cls.activeDot : ''}`}
+                  onClick={() => goToSlide(index)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       ))}
       
-      <div className={cls.dotsContainer}>
-        {item.map((_, index) => (
-          <div
-            key={index}
-            className={`${cls.dot} ${index === currentIndex ? cls.activeDot : ''}`}
-            onClick={() => goToSlide(index)}
-          />
-        ))}
-      </div>
     </div>
   );
 };
 
-export default MainTopSlider;
+export default NewsTopSlider;
