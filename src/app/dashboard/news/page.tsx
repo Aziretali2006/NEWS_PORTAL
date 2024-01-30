@@ -12,7 +12,7 @@ const News = () => {
     <Container>
       <div className={cls.news}>
         <Header />
-        <h2>Новости</h2>
+        <h2 className={cls.news_h2}>Новости</h2>
         <div className={cls.slider}>
           <NewsTopSlider item={NewsSliderListObject}/>
         </div>

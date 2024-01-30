@@ -1,13 +1,14 @@
 "use client"
 
-import React from 'react'
-import Container from '@/app/components/container/Container'
-import Header from '@/app/components/header/Header'
-import { AppealAttentionList, AppealListObject } from '@/app/utils/AppealList'
+import React from 'react';
+import Container from '@/app/components/container/Container';
+import Header from '@/app/components/header/Header';
+import Footer from '@/app/components/footer/Footer';
+import { AppealAttentionList, AppealListObject } from '@/app/utils/AppealList';
 import { RiArrowRightSFill } from "react-icons/ri";
 import { MdErrorOutline , MdDownload } from "react-icons/md";
+
 import cls from "./Appeal.module.scss";
-import Footer from '@/app/components/footer/Footer'
 
 interface IFile {
   file: File,
@@ -124,4 +125,4 @@ const Appeal = () => {
   )
 }
 
-export default Appeal
+export default Appeal;

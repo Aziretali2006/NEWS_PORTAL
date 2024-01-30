@@ -12,6 +12,11 @@
       border: 0;
     }
   }
+
+  .column_category {
+    display: flex;
+    flex-direction: column;
+  }
   
   .category_selected {
     display: flex;

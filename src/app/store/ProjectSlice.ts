@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   selectedCategory: null,
   selectedId: null,
+  anotherPage: null,
 }
 
 export const ProjectSlice = createSlice({
@@ -18,10 +19,14 @@ export const ProjectSlice = createSlice({
     clearProjectId: (state) => {
       state.selectedId = null;
     },
+    anotherPage: (state, action) => {
+      state.anotherPage = action.payload
+    }
   }
 });
 
 export const { setCategory } = ProjectSlice.actions;
+export const { anotherPage } = ProjectSlice.actions;
 export const { setProjectId } = ProjectSlice.actions;
 export const { clearProjectId } = ProjectSlice.actions;
 export default ProjectSlice.reducer;

@@ -1,0 +1,31 @@
+
+.photo_gallery {
+  width: 100%;
+  h2 {
+    margin-top: 100px;
+    margin-bottom: 70px;
+    font-size: 48px;
+    font-weight: 700;
+  }
+
+  .photo_content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    @media (max-width: 425px) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img {
+      
+      @media (max-width: 768px) {
+        width: 340px;
+        height: 250px;
+      }
+    }
+  }
+}

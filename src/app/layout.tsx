@@ -4,6 +4,7 @@ import "./globals.css"
 import { Provider } from 'react-redux'
 import { setupStore } from './store/Store'
 import StoreProvider from './StoreProviders'
+import Header from './components/header/Header'
 
 const inter = Inter({ subsets: ['latin'] })
 

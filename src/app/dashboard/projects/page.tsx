@@ -7,21 +7,31 @@ import Category from './category/Category';
 import Image from 'next/image';
 import Footer from '@/app/components/footer/Footer';
 import CardLastNews from '../main/ourProjects/CardLastNews/CardLastNews';
+import EducationComponent from '@/app/components/categoryComponents/educationComp/EducationComponent';
 import { CardLastNewsObject } from '@/app/utils/LastNewsCardList';
+import { useAppSelector } from '@/app/hook/reduxHooks';
 
 import cls from './projects.module.scss';
-import { useAppSelector } from '@/app/hook/reduxHooks';
 
 const Projects = () => {
   const {selectedCategory, selectedId} = useAppSelector(state => state.ProjectSlice);
 
+  const categoryContent: Record<string, JSX.Element> = {
+    'Образование': <EducationComponent />,
+    'Здравоохранение': <div><h2>AZIRETALI</h2></div>,
+    'Экология': <div><h2>Sharapov</h2></div>,
+    'Культура': <div><h2>Культура</h2></div>,
+    'Наука': <div><h2>наука</h2></div>,
+    'Правовая защита': <div><h2>Правовая защита</h2></div>,
+    'Экономическая благосостояние': <div><h2>Экономическая балогосостояние</h2></div>
+  };
 
   return (
     <Container>
       <div className={cls.projects}>
         <Header />
         <div>
-          <Category />  
+          <Category categoryContents={categoryContent} customClass='' customMainClass=""/>  
         </div>
         {
           (!selectedCategory && selectedId === null) && (

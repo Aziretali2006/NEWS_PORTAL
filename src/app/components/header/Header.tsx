@@ -20,7 +20,7 @@ const Header = () => {
   }, [selected]);
 
   return (
-    <header className={cls.header}>
+    <header className={`${cls.header} ${active ? cls.active : ''}`}>
       <Container>
         <section className={cls.navbar}>
           <div className={cls.logo_and_language}>
