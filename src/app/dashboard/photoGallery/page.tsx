@@ -20,6 +20,7 @@ const PhotoGalley = () => {
   const closeModal = () => {
     setSelectedImg(null);
   };
+
   return (
     <section>
       <Container>

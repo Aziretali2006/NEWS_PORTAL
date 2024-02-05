@@ -1,0 +1,41 @@
+
+.header {
+  background-color: #343434;
+  margin: 0;
+  padding: 25px 0;
+  
+  .container {
+    width: 94%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .inline {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+  
+      svg {
+        color: white;
+      }
+  
+      p {
+        font-size: 18px;
+        font-weight: 400;
+        color: white;
+      }
+    }
+
+    button {
+      width: 142px;
+      height: 42px;
+      background-color: var(--btn-and-leaves-color);
+      cursor: pointer;
+      border: 0;
+      color: white;
+      font-size: 17px;
+    }
+  }
+
+}
