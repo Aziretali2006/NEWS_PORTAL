@@ -23,7 +23,7 @@ interface CategoryProps {
 
 const Category: FC<CategoryProps> = ({ customClass, categoryContents, customMainClass }) => {
   const dispatch = useAppDispatch();
-  const {selectedCategory , anotherPage} = useAppSelector(state => state.ProjectSlice)
+  const {selectedCategory} = useAppSelector(state => state.ProjectSlice)
   const [isOpen, setIsOpen] = React.useState<boolean>(false)
 
   const ChooseCategory = (categoryTitle: string) => {

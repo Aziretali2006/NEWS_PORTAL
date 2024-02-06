@@ -1,0 +1,84 @@
+.adminTable {
+  width: 1300px;
+  border: 1px solid black;
+  padding: 10px;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th {
+    background-color: #343434;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: 0;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    svg {
+      width: 28px;
+      height: 28px;
+      color: #00000075;
+      cursor: pointer;
+    }
+  }
+
+  td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+
+  td:nth-child(1) {
+    background-color: white;
+  }
+
+  td:nth-child(2) {
+    background-color: #E5F1DD;
+  }
+
+  td:nth-child(4) {
+    color: #0A70A9;
+    background-color: #E5F1DD;
+    text-align: center;
+  }
+
+  td:nth-child(5) {
+    color: #0A70A9;
+    background-color: white;
+    text-align: center;
+  }
+
+  td:nth-child(6) {
+    background-color: #E5F1DD;
+  }
+
+  .full_name {
+    overflow-y: auto;
+    max-height: 100px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    th, td {
+      padding: 5px;
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    th, td {
+      padding: 5px;
+      font-size: 12px;
+    }
+  }
+}

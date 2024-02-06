@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
-import ProjectSlice from "./ProjectSlice"
+import ProjectSlice from "./ProjectSlice";
+import AdminNewsSlice from "./AdminNewsSlice";
 
 const rootReducer = combineReducers({
-  ProjectSlice
+  ProjectSlice,
+  AdminNewsSlice
 });
 
 export const setupStore = () => {
