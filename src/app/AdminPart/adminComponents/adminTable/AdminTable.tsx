@@ -1,86 +1,81 @@
-import React from 'react'
+"use client"
+
+import React, { FC } from 'react'
+import { setEditableRowIndex, setEditedRow } from '@/app/store/AdminNewsSlice';
+import { useAppDispatch, useAppSelector } from '@/app/hook/reduxHooks';
 import { RiEdit2Fill } from "react-icons/ri";
 import { MdDeleteOutline } from "react-icons/md";
+import { AiOutlineCheck } from "react-icons/ai";
 
-import cls from "./AdminTable.module.scss";
+import cls from "./AdminTable.module.scss"; 
 
-const AdminTable = () => {
+interface IProps {
+  columns: string[];
+  rows: string[][];
+}
 
+const AdminTable: FC<IProps> = ({columns, rows}) => {
+  const {editableRowIndex, editedRow} = useAppSelector(state => state.AdminNewsSlice);
+  const dispatch = useAppDispatch();
+
+  const handleEditRow = (rowIndex: number) => {
+    dispatch(setEditableRowIndex(rowIndex))
+    dispatch(setEditedRow(rows[rowIndex]))
+  };
+
+  const handleSave = () => {
+    dispatch(setEditableRowIndex(null));
+    dispatch(setEditedRow([]));
+  };
+
+  const handleInputChange = (value: string, index: number) => {
+    const updatedRow = [...editedRow];
+    updatedRow[index] = value;
+    dispatch(setEditedRow(updatedRow))
+  };
 
   return (
     <div className={cls.adminTable}>
       <table>
-        <tr>
-          <th>N</th>
-          <th>Заголовок</th>
-          <th>Текст</th>
-          <th>Фотография</th>
-          <th>Видео</th>
-          <th>Действие</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td> CОСТОЯЛОСЬ ЕЖЕГОДНОЕ СОБРАНИЕ ОБЩЕСТВЕННОГО БЛАГОТВОРИТЕЛЬНОГО ФОНДА </td>
-          <td className={cls.full_name}> 
-            Мы помогаем матерям-одиночкам, детям-сиротам и иным уязвимым группам населения по всему Кыргызстану.  Семь приоритетных направлений нашей деятельности  «Отмеченные лауреаты - гордость нашего народа, которые служат маяком для всех людей, вдохновляя их, и в конечном счёте
-          </td>
-          <td>tirek.jpg</td>
-          <td>https://www.youtube.com/watch?v=aXD7h91Ek2A</td>
-          <td>
-            <div className={cls.icons}>
-              <RiEdit2Fill/>
-              <MdDeleteOutline/>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td > CОСТОЯЛОСЬ ЕЖЕГОДНОЕ СОБРАНИЕ ОБЩЕСТВЕННОГО БЛАГОТВОРИТЕЛЬНОГО ФОНДА </td>
-          <td className={cls.full_name}> 
-            Мы помогаем матерям-одиночкам, детям-сиротам и иным уязвимым группам населения по всему Кыргызстану.  Семь приоритетных направлений нашей деятельности  «Отмеченные лауреаты - гордость нашего народа, которые служат маяком для всех людей, вдохновляя их, и в конечном счёте
-          </td>
-          <td>tirek.jpg</td>
-          <td>https://www.youtube.com/watch?v=aXD7h91Ek2A</td>
-          <td>
-            <div className={cls.icons}>
-              <RiEdit2Fill/>
-              <MdDeleteOutline/>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td> CОСТОЯЛОСЬ ЕЖЕГОДНОЕ СОБРАНИЕ ОБЩЕСТВЕННОГО БЛАГОТВОРИТЕЛЬНОГО ФОНДА </td>
-          <td className={cls.full_name}> 
-            Мы помогаем матерям-одиночкам, детям-сиротам и иным уязвимым группам населения по всему Кыргызстану.  Семь приоритетных направлений нашей деятельности  «Отмеченные лауреаты - гордость нашего народа, которые служат маяком для всех людей, вдохновляя их, и в конечном счёте
-          </td>
-          <td>tirek.jpg</td>
-          <td>https://www.youtube.com/watch?v=aXD7h91Ek2A</td>
-          <td>
-            <div className={cls.icons}>
-              <RiEdit2Fill/>
-              <MdDeleteOutline/>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td> CОСТОЯЛОСЬ ЕЖЕГОДНОЕ СОБРАНИЕ ОБЩЕСТВЕННОГО БЛАГОТВОРИТЕЛЬНОГО ФОНДА </td>
-          <td className={cls.full_name}> 
-            Мы помогаем матерям-одиночкам, детям-сиротам и иным уязвимым группам населения по всему Кыргызстану.  Семь приоритетных направлений нашей деятельности  «Отмеченные лауреаты - гордость нашего народа, которые служат маяком для всех людей, вдохновляя их, и в конечном счёте
-          </td>
-          <td>tirek.jpg</td>
-          <td>https://www.youtube.com/watch?v=aXD7h91Ek2A</td>
-          <td>
-            <div className={cls.icons}>
-              <RiEdit2Fill/>
-              <MdDeleteOutline/>
-            </div>
-          </td>
-        </tr>
+        <thead>
+          <tr>
+            {columns.map((column, index) => (
+              <th key={index}>{column}</th>
+            ))}
+            <th className={cls.actionCell}>Действие</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map((row, rowIndex) => (
+            <tr key={rowIndex}>
+              {row.map((cell, cellIndex) => (
+                <td key={cellIndex} className={cellIndex === 2 ? cls.textCell : ''}>
+                  {editableRowIndex === rowIndex ? (
+                    <input
+                      className={cls.input}
+                      type="text"
+                      value={editedRow[cellIndex]}
+                      onChange={(e) => handleInputChange(e.target.value, cellIndex)}
+                    />
+                  ) : (
+                    cell
+                  )}
+                </td>
+              ))}
+              <td className={cls.icons}>
+                {editableRowIndex === rowIndex ? (
+                  <AiOutlineCheck onClick={handleSave}/>
+                ) : (
+                  <RiEdit2Fill onClick={() => handleEditRow(rowIndex)} />
+                )}
+                <MdDeleteOutline />
+              </td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
 export default AdminTable

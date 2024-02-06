@@ -2,42 +2,14 @@
   width: 1300px;
   border: 1px solid black;
   padding: 10px;
+  overflow-x: auto; /* Добавляем горизонтальную прокрутку для таблицы, если содержимое слишком широкое */
 
   table {
     width: 100%;
     border-collapse: collapse;
   }
 
-  th {
-    background-color: #343434;
-    color: white;
-    font-weight: bold;
-    padding: 10px;
-    border: 0;
-    font-size: 18px;
-    font-weight: 400;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .icons {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
-    svg {
-      width: 28px;
-      height: 28px;
-      color: #00000075;
-      cursor: pointer;
-    }
-  }
-
-  td {
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-
+  
   td:nth-child(1) {
     background-color: white;
   }
@@ -55,17 +27,62 @@
   td:nth-child(5) {
     color: #0A70A9;
     background-color: white;
-    text-align: center;
   }
 
   td:nth-child(6) {
     background-color: #E5F1DD;
   }
 
-  .full_name {
+  th {
+    background-color: #343434;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    border: 0;
+    font-size: 18px;
+    font-weight: 400;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    white-space: nowrap; /* Запрещаем перенос текста на новую строку */
+    max-width: 300px;
+    max-height: 300px; /* Устанавливаем максимальную ширину для ячейки с текстом */
+    overflow: hidden; /* Скрываем содержимое, которое не помещается в ячейку */
+    text-overflow: ellipsis;
+    text-align: center; /* Отображаем многоточие, если текст обрезается */
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    svg {
+      width: 28px;
+      height: 28px;
+      color: #00000075;
+      cursor: pointer;
+    }
+  }
+
+  .textCell {
+    max-height: 300px; /* Максимальная высота столбца "Текст" */
     overflow-y: auto;
-    max-height: 100px;
-    display: block;
+    
+  }
+  .input {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 5px;
+  }/* Включаем вертикальную прокрутку */
+
+  .actionCell {
+    width: 100px; /* Фиксированная ширина столбца "Действие" */
   }
 
   @media (max-width: 768px) {

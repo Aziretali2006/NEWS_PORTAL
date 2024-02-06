@@ -1,0 +1,148 @@
+
+.add_news {
+  margin-top: 50px;
+
+  .content {
+    width: 1100px;
+
+    .title_content {
+      margin-top: 40px; 
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      
+      .inline {
+        display: flex;
+        align-items: flex-start;
+        gap: 5px;
+      }
+
+      input {
+        width: 800px;
+        padding: 16px 0;
+        background: none;
+        border: 1px solid #C6C6C6;
+        font-size: 18px;
+      }
+    }
+
+    .text_content {
+      margin-top: 40px; 
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 100%;
+      
+      .inline {
+        display: flex;
+        align-items: flex-start;
+        gap: 5px;
+      }
+
+      textarea {
+        width: 800px;
+        height: 200px;
+        background: none;
+        border: 1px solid #C6C6C6;
+        font-size: 18px;
+      }
+    }
+
+    .photo_content {
+      margin-top: 40px;
+      width: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      
+      .text {
+        width: 200px;
+      }
+
+      .file {
+        .inline_block {
+          width: 800px;
+          display: flex;
+          align-items: center;
+          gap: 30px;
+
+          div {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            p {
+              color: #474747;
+              font-size: 20px;
+              cursor: pointer;
+            }
+
+            svg {
+              width: 40px;
+              height: 40px;
+              color: var(--btn-and-leaves-color);
+              cursor: pointer;
+            }
+          }
+
+          b {
+            color: #284C9A;
+            font-size: 20px;
+            font-weight: 400;
+          }
+
+        }
+      }
+    }
+
+    .video_content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 40px;
+
+      .text {
+        width: 200px;
+      }
+
+      input {
+        width: 800px;
+        padding: 16px 0;
+        background: none;
+        border: 1px solid #C6C6C6;
+        font-size: 18px;
+        color:#0A70A9;
+      }
+    }
+    
+    .buttons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 50px;
+      margin-top: 30px;
+
+      :nth-child(1) {
+        background-color: var(--btn-and-leaves-color);
+        width: 142px;
+        height: 50px;
+        border: 0;
+        font-size: 17px;
+        color: white;
+      }
+
+      :nth-child(2) {
+        background-color: #D22525;
+        width: 142px;
+        height: 50px;
+        border: 0;
+        font-size: 17px;
+        color: white;
+      }
+    }
+  }
+}

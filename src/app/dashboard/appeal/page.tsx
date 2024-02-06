@@ -10,7 +10,7 @@ import { MdErrorOutline , MdDownload } from "react-icons/md";
 
 import cls from "./Appeal.module.scss";
 
-interface IFile {
+export interface IFile {
   file: File,
 }
 
