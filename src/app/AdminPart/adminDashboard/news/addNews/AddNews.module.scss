@@ -2,6 +2,12 @@
 .add_news {
   margin-top: 50px;
 
+  h2 {
+    font-size: 32px;
+    font-weight: 400;
+    color: #000000;
+  }
+
   .content {
     width: 1100px;
 
@@ -12,6 +18,12 @@
       flex-wrap: wrap;
       justify-content: space-between;
       width: 100%;
+
+      h3 {
+        font-size: 22px;
+        font-weight: 400;
+        color: #000000;
+      }
       
       .inline {
         display: flex;
@@ -40,6 +52,12 @@
         display: flex;
         align-items: flex-start;
         gap: 5px;
+
+        h3 {
+          font-size: 22px;
+          font-weight: 400;
+          color: #000000;
+        }
       }
 
       textarea {
@@ -60,6 +78,12 @@
       
       .text {
         width: 200px;
+
+        h3 {
+          font-size: 22px;
+          font-weight: 400;
+          color: #000000;
+        }
       }
 
       .file {
@@ -107,6 +131,12 @@
 
       .text {
         width: 200px;
+
+        h3 {
+          font-size: 22px;
+          font-weight: 400;
+          color: #000000;
+        }
       }
 
       input {

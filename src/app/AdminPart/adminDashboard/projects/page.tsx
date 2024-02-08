@@ -45,7 +45,7 @@ const Projects = () => {
             </div>
           ) : (
             <div className={cls.div}>
-              <AddNews page="projects" name='Проект'/>
+               <AddNews page="projects" name='Проект'/>
             </div>
           )}
         </div>

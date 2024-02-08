@@ -2,13 +2,15 @@
 
 import React from 'react'
 import Header from '../../adminComponents/header/Header';
-import cls from "./Gallery.module.scss";
 import SideBar from '../../adminComponents/sideBar/SideBar';
+import AdminTable from '../../adminComponents/adminTable/AdminTable';
+import AddNews from '../news/addNews/AddNews';
 import { useAppDispatch, useAppSelector } from '@/app/hook/reduxHooks';
 import { FiPlus } from 'react-icons/fi';
 import { setAddNews } from '@/app/store/AdminNewsSlice';
-import AdminTable from '../../adminComponents/adminTable/AdminTable';
-import AddNews from '../news/addNews/AddNews';
+
+import cls from "./Gallery.module.scss";
+import AddGallery from './AddGallery/AddGallery';
 
 const AdminGallery = () => {
   const { addNews } = useAppSelector(state => state.AdminNewsSlice);
@@ -43,7 +45,7 @@ const AdminGallery = () => {
           </div>
         ) : (
           <div className={cls.div}>
-            <AddNews page="gallery" name='Фотогалерея'/>
+            <AddGallery />
           </div>
         )}
       </div>
