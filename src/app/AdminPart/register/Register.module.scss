@@ -1,0 +1,107 @@
+
+.login {
+  display: grid;
+  place-items: center;
+  margin-top: 300px;
+
+  &_name {
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      color: #C4C4C4;
+    }
+
+    input {
+      width: 530px;
+      background: none;
+      border: 0px;
+      border-bottom: 2px solid #C4C4C4;
+      padding: 20px 10px;
+      font-size: 18px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &_email {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      color: #C4C4C4;
+    }
+
+    input {
+      width: 530px;
+      background: none;
+      border: 0px;
+      border-bottom: 2px solid #C4C4C4;
+      padding: 20px 10px;
+      font-size: 18px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &_password {
+    display: flex;
+    align-items: center;
+    margin-top: 35px;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      color: #C4C4C4;
+    }
+
+    input {
+      width: 530px;
+      background: none;
+      border: 0px;
+      border-bottom: 2px solid #C4C4C4;
+      padding: 20px 10px;
+      font-size: 18px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &_btn {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+
+    button {
+      width: 100%;
+      padding: 20px 0;
+      border: 0;
+      background-color: var(--btn-and-leaves-color);
+      color: white;
+      font-size: 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--btn-and-leaves-color);
+    }
+
+    a {
+      text-align: center;
+      margin-top: 40px;
+      text-decoration: none;
+      font-size: 20px;
+      color: #164A41;
+      cursor: pointer;
+    }
+  }
+}

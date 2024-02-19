@@ -2,10 +2,12 @@ import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import ProjectSlice from "./ProjectSlice";
 import AdminNewsSlice from "./AdminNewsSlice";
+import AuthSlice from "./AuthSlice";
 
 const rootReducer = combineReducers({
   ProjectSlice,
-  AdminNewsSlice
+  AdminNewsSlice,
+  AuthSlice
 });
 
 export const setupStore = () => {

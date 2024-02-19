@@ -9,11 +9,17 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { IoMdClose } from "react-icons/io";
 
 import cls from "./Header.module.scss";
+import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const savedSelected = localStorage.getItem('selectedLanguage') || '';
   const [selected, setSelected] = React.useState<string>(savedSelected);
   const [active , setActive] = React.useState<boolean>(false);
+  const router = useRouter();
+
+  const handleNaigate = () => {
+    router.push("/AdminPart/login")
+  }
 
   React.useEffect(() => {
       localStorage.setItem('selectedLanguage', selected);
@@ -48,7 +54,7 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          <button className={cls.btn}>Обратиться</button>
+          <button onClick={handleNaigate} className={cls.btn}>Обратиться</button>
           <div onClick={() => setActive(!active)} className={cls.burger_el}>
             {active ? <IoMdClose size={45}/> : <RxHamburgerMenu size={45}/>}
           </div>

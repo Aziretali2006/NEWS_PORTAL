@@ -28,6 +28,31 @@
     }
   }
 
+  &_email {
+    display: flex;
+    align-items: center;
+    margin-bottom: 35px;
+
+    svg {
+      width: 25px;
+      height: 25px;
+      color: #C4C4C4;
+    }
+
+    input {
+      width: 530px;
+      background: none;
+      border: 0px;
+      border-bottom: 2px solid #C4C4C4;
+      padding: 20px 10px;
+      font-size: 18px;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
   &_password {
     display: flex;
     align-items: center;

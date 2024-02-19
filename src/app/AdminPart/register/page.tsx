@@ -1,36 +1,45 @@
 "use client"
 
 import React from 'react';
-import { FaRegUser } from 'react-icons/fa';
+import { FaRegUser } from "react-icons/fa";
 import { CiLock } from 'react-icons/ci';
 import { useAppDispatch } from '@/app/hook/reduxHooks';
-import { useRouter } from 'next/navigation';
+import { GetUsers, PostRegister } from '@/app/store/AuthSlice';
+import { IRegister } from '@/app/interface/IAuthType';
 import { useForm } from 'react-hook-form';
-import { ILogin } from '@/app/interface/IAuthType';
-import { PostLogin } from '@/app/store/AuthSlice';
+import { useRouter } from 'next/navigation';
 
-import cls from "./Login.module.scss";
+import cls from "./Register.module.scss";
+import { MdOutlineEmail } from 'react-icons/md';
 
-const Login = () => {
+const Register = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
   const {
     register,
     handleSubmit,
-  } = useForm<ILogin>({
+  } = useForm<IRegister>({
     mode: "onBlur",  
   });
 
-  const handleLogin = async(data: ILogin) => {
-    dispatch(PostLogin(data));
-    router.push("/AdminPart/adminDashboard/news")
+  const handleSubmitButton = async (data: IRegister) => {
+    await dispatch(PostRegister(data))
+    router.push("/AdminPart/login")
   }
+
+  React.useEffect(() => {
+    dispatch(GetUsers())
+  }, [])
 
   return (
     <div className={cls.login}>
-      <form onSubmit={handleSubmit(handleLogin)}>
+      <form onSubmit={handleSubmit(handleSubmitButton)}>
         <div className={cls.login_email}>
+          <MdOutlineEmail />
+          <input type='email' placeholder='Email пользователя' {...register("email")}/>
+        </div>
+        <div className={cls.login_name}>
           <FaRegUser />
           <input type='text' placeholder='Имя пользователя' {...register("username")}/>
         </div>
@@ -45,6 +54,6 @@ const Login = () => {
       </form>
     </div>
   )
-}
+};
 
-export default Login;
+export default Register;
