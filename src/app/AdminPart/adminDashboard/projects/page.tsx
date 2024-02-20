@@ -10,6 +10,7 @@ import { FiPlus } from 'react-icons/fi';
 import { setAddNews } from '@/app/store/AdminNewsSlice';
 
 import cls from "./Projects.module.scss";
+import { accessToken } from '@/app/store/AuthSlice';
 
 const Projects = () => {
   const { addNews } = useAppSelector(state => state.AdminNewsSlice);
@@ -31,25 +32,34 @@ const Projects = () => {
   }
 
   return (
-    <div className={cls.projects}>
-      <Header />
-      <div className={cls.left_content}>
-        <SideBar />
-        <div>
-          {addNews ? (
-            <div className={cls.content}>
-              <button onClick={handleSubmit} className={cls.btn}>
-                <FiPlus width={20} height={20} /> Добавить
-              </button>
-              <AdminTable columns={columns} rows={rows}/>
+    <div>
+      {
+        accessToken ? (
+          <div className={cls.projects}>
+            <Header />
+            <div className={cls.left_content}>
+              <SideBar />
+              <div>
+                {addNews ? (
+                  <div className={cls.content}>
+                    <button onClick={handleSubmit} className={cls.btn}>
+                      <FiPlus width={20} height={20} /> Добавить
+                    </button>
+                    <AdminTable columns={columns} rows={rows}/>
+                  </div>
+                ) : (
+                  <div className={cls.div}>
+                    <AddNews page="projects" name='Проект'/>
+                  </div>
+                )}
+              </div>
             </div>
-          ) : (
-            <div className={cls.div}>
-               <AddNews page="projects" name='Проект'/>
-            </div>
-          )}
-        </div>
-      </div>
+          </div>
+        ) : (
+          <div>He авторизован</div>
+        )
+      }
+
     </div>
   )
 }

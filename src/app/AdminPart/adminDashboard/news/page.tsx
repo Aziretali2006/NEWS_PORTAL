@@ -10,6 +10,7 @@ import { setAddNews } from '@/app/store/AdminNewsSlice';
 
 import cls from './News.module.scss';
 import AddNews from './addNews/AddNews';
+import { accessToken } from '@/app/store/AuthSlice';
 
 const News = () => {
   const { addNews } = useAppSelector(state => state.AdminNewsSlice);
@@ -22,7 +23,7 @@ const News = () => {
 
   const columns: string[] = ["N", "Заголовок", "Текст", "Фотография", "Видео"];
   const rows: string[][] = [
-    ["1", "CОСТОЯЛОСЬ ЕЖЕГОДНОЕ СОБРАНИЕ ОБЩЕСТВЕННОГО БЛАГОТВОРИТЕЛЬНОГО ФОНДА ", "Text 1", "Photo 1", "Video 1"],
+    ["1", "CОСТОЯЛОСЬ ЕЖЕГОДНОЕ СОБРАНИЕ ОБЩЕСТВЕННОГО/ БЛАГОТВОРИТЕЛЬНОГО ФОНДА ", "Text 1", "Photo 1", "Video 1"],
     ["2", "Title 2", "Мы помогаем матерям-одиночкам, детям-сиротам и иным уязвимым группам населения по всему Кыргызстану.  Семь приоритетных направлений нашей деятельности  «Отмеченные лауреаты - гордость нашего народа, которые служат маяком для всех людей, вдохновляя их, и в конечном счёте", "Photo 2", "https://www.youtube.com/watch?v=aXD7h91Ek2A"],
     ["3", "Title 3", "Text 3", "Photo 3", "Video 3"],
     ["4", "Title 4", "Text 4", "Photo4", "Video 4"],
@@ -32,25 +33,35 @@ const News = () => {
 
 
   return (
-    <div className={cls.news}>
-      <Header />
-      <div className={cls.left_content}>
-        <SideBar />
-        <div>
-          {addNews ? (
-            <div className={cls.content}>
-              <button onClick={handleSubmit} className={cls.btn}>
-                <FiPlus width={20} height={20} /> Добавить
-              </button>
-              <AdminTable columns={columns} rows={rows}/>
+    <div>
+      {
+        accessToken ? (
+          <div className={cls.news}>
+            <Header />
+            <div className={cls.left_content}>
+              <SideBar />
+              <div>
+                {addNews ? (
+                  <div className={cls.content}>
+                    <button onClick={handleSubmit} className={cls.btn}>
+                      <FiPlus width={20} height={20} /> Добавить
+                    </button>
+                    <AdminTable columns={columns} rows={rows}/>
+                  </div>
+                ) : (
+                  <div className={cls.div}>
+                    <AddNews page="news" name='Новости'/>
+                  </div>
+                )}
+              </div>
             </div>
-          ) : (
-            <div className={cls.div}>
-              <AddNews page="news" name='Новости'/>
-            </div>
-          )}
-        </div>
-      </div>
+          </div>
+        ) : (
+          <div>
+            <h1>Не авторизован</h1>
+          </div>
+        )
+      }
     </div>
   )
 }

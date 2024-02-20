@@ -14,6 +14,7 @@ interface IAuthSlice {
   refreshToken: string;
   user: IUser | null;
   isLoading: boolean,
+  isAuthed: boolean
 }
 
 const initialState: IAuthSlice = {
@@ -21,6 +22,7 @@ const initialState: IAuthSlice = {
   refreshToken: "",
   user: null,
   isLoading: false,
+  isAuthed: false
 };
 
 export const PostRegister = createAsyncThunk(
@@ -61,7 +63,11 @@ export const GetUsers = createAsyncThunk(
       return e
     }
   }
-)
+);
+
+export const accessToken = localStorage.getItem("accessToken");
+const retrievedUserArray = localStorage.getItem("user");
+export const username = retrievedUserArray ? JSON.parse(retrievedUserArray) : [];
 
 export const AuthSlice = createSlice({
   name: "auth/register",
@@ -78,6 +84,9 @@ export const AuthSlice = createSlice({
         state.accessToken = action.payload.accessToken;
         state.refreshToken = action.payload.refreshToken;
         state.user = action.payload.user;
+        (state.isAuthed = true), 
+          localStorage.setItem("accessToken" , action.payload.accessToken)
+          localStorage.setItem("user", JSON.stringify(action.payload?.user?.username));
       })
       .addCase(GetUsers.fulfilled, (state, action: PayloadAction<boolean>) => {
         state.isLoading = false

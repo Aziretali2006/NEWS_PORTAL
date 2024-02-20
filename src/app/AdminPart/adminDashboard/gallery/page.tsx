@@ -11,6 +11,7 @@ import { setAddNews } from '@/app/store/AdminNewsSlice';
 
 import cls from "./Gallery.module.scss";
 import AddGallery from './AddGallery/AddGallery';
+import { accessToken } from '@/app/store/AuthSlice';
 
 const AdminGallery = () => {
   const { addNews } = useAppSelector(state => state.AdminNewsSlice);
@@ -31,26 +32,37 @@ const AdminGallery = () => {
   }
 
   return (
-    <div className={cls.gallery}>
-    <Header />
-    <div className={cls.left_content}>
-      <SideBar />
-      <div>
-        {addNews ? (
-          <div className={cls.content}>
-            <button onClick={handleSubmit} className={cls.btn}>
-              <FiPlus width={20} height={20} /> Добавить
-            </button>
-            <AdminTable columns={columns} rows={rows}/>
+    <div>
+      {
+        accessToken ? (
+          <div className={cls.gallery}>
+            <Header />
+            <div className={cls.left_content}>
+              <SideBar />
+              <div>
+                {addNews ? (
+                  <div className={cls.content}>
+                    <button onClick={handleSubmit} className={cls.btn}>
+                      <FiPlus width={20} height={20} /> Добавить
+                    </button>
+                    <AdminTable columns={columns} rows={rows}/>
+                  </div>
+                ) : (
+                  <div className={cls.div}>
+                    <AddGallery />
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
         ) : (
-          <div className={cls.div}>
-            <AddGallery />
+          <div>
+            <h1>Не авторизован</h1>
           </div>
-        )}
-      </div>
+        )
+      }
+
     </div>
-  </div>
   )
 }
 
