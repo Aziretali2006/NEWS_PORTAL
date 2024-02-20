@@ -2,5 +2,8 @@
 export const RequestPath = {
   register: "/registration",
   login: "/login",
-  getUser: "/user"
+  getUser: "/user",
+  logout: "/logout",
+  addNews: "/addNews",
+  getNews: "/getNews"
 };

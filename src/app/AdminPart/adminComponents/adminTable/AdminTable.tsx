@@ -1,26 +1,30 @@
-"use client"
-
-import React, { FC } from 'react'
-import { setEditableRowIndex, setEditedRow } from '@/app/store/AdminNewsSlice';
+import React, { FC } from 'react';
+import { getNews, setEditableRowIndex, setEditedRow } from '@/app/store/AdminNewsSlice';
 import { useAppDispatch, useAppSelector } from '@/app/hook/reduxHooks';
-import { RiEdit2Fill } from "react-icons/ri";
-import { MdDeleteOutline } from "react-icons/md";
-import { AiOutlineCheck } from "react-icons/ai";
+import { RiEdit2Fill } from 'react-icons/ri';
+import { MdDeleteOutline } from 'react-icons/md';
+import { AiOutlineCheck } from 'react-icons/ai';
 
-import cls from "./AdminTable.module.scss"; 
+import cls from './AdminTable.module.scss';
+import { IAddNews } from '@/app/interface/IAdminType';
 
 interface IProps {
   columns: string[];
   rows: string[][];
 }
 
-const AdminTable: FC<IProps> = ({columns, rows}) => {
-  const {editableRowIndex, editedRow} = useAppSelector(state => state.AdminNewsSlice);
+const AdminTable: FC<IProps> = ({ columns, rows }) => {
+  const { editableRowIndex, editedRow } = useAppSelector(state => state.AdminNewsSlice);
   const dispatch = useAppDispatch();
+  const { getContent } = useAppSelector(state => state.AdminNewsSlice);
+
+  React.useEffect(() => {
+    dispatch(getNews());
+  }, []);
 
   const handleEditRow = (rowIndex: number) => {
-    dispatch(setEditableRowIndex(rowIndex))
-    dispatch(setEditedRow(rows[rowIndex]))
+    dispatch(setEditableRowIndex(rowIndex));
+    dispatch(setEditedRow(rows[rowIndex]));
   };
 
   const handleSave = () => {
@@ -31,7 +35,7 @@ const AdminTable: FC<IProps> = ({columns, rows}) => {
   const handleInputChange = (value: string, index: number) => {
     const updatedRow = [...editedRow];
     updatedRow[index] = value;
-    dispatch(setEditedRow(updatedRow))
+    dispatch(setEditedRow(updatedRow));
   };
 
   return (
@@ -46,9 +50,9 @@ const AdminTable: FC<IProps> = ({columns, rows}) => {
           </tr>
         </thead>
         <tbody>
-          {rows.map((row, rowIndex) => (
+          {getContent.map((row, rowIndex) => (
             <tr key={rowIndex}>
-              {row.map((cell, cellIndex) => (
+              {Object.entries(row).map(([key, value], cellIndex) => (
                 <td key={cellIndex} className={cellIndex === 2 ? cls.textCell : ''}>
                   {editableRowIndex === rowIndex ? (
                     <input
@@ -58,13 +62,13 @@ const AdminTable: FC<IProps> = ({columns, rows}) => {
                       onChange={(e) => handleInputChange(e.target.value, cellIndex)}
                     />
                   ) : (
-                    cell
+                    value
                   )}
                 </td>
               ))}
               <td className={cls.icons}>
                 {editableRowIndex === rowIndex ? (
-                  <AiOutlineCheck onClick={handleSave}/>
+                  <AiOutlineCheck onClick={handleSave} />
                 ) : (
                   <RiEdit2Fill onClick={() => handleEditRow(rowIndex)} />
                 )}
@@ -78,4 +82,4 @@ const AdminTable: FC<IProps> = ({columns, rows}) => {
   );
 };
 
-export default AdminTable
+export default AdminTable;
