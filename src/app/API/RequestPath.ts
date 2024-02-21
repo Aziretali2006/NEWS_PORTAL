@@ -1,9 +1,14 @@
 
-export const RequestPath = {
+export const AuthorizationPath = {
   register: "/registration",
   login: "/login",
   getUser: "/user",
   logout: "/logout",
-  addNews: "/addNews",
-  getNews: "/getNews"
+  
 };
+
+export const AdminPath = {
+  addNews: "/addNews",
+  getNews: "/getNews",
+  addProjects: "/addProjects",
+}

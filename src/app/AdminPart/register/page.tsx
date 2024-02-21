@@ -8,9 +8,9 @@ import { GetUsers, PostRegister } from '@/app/store/AuthSlice';
 import { IRegister } from '@/app/interface/IAuthType';
 import { useForm } from 'react-hook-form';
 import { useRouter } from 'next/navigation';
+import { MdOutlineEmail } from 'react-icons/md';
 
 import cls from "./Register.module.scss";
-import { MdOutlineEmail } from 'react-icons/md';
 
 const Register = () => {
   const dispatch = useAppDispatch();

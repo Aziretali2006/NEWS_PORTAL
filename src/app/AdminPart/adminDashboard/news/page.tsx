@@ -6,16 +6,15 @@ import Header from '../../adminComponents/header/Header';
 import AdminTable from '../../adminComponents/adminTable/AdminTable';
 import { FiPlus } from 'react-icons/fi';
 import { useAppDispatch, useAppSelector } from '@/app/hook/reduxHooks';
-import { getNews, setAddNews } from '@/app/store/AdminNewsSlice';
-
-import cls from './News.module.scss';
+import { setAddNews } from '@/app/store/AdminNewsSlice';
 import AddNews from './addNews/AddNews';
 import { accessToken } from '@/app/store/AuthSlice';
 
+import cls from './News.module.scss';
+
 const News = () => {
-  const { addNews, getContent} = useAppSelector(state => state.AdminNewsSlice);
+  const { addNews} = useAppSelector(state => state.AdminNewsSlice);
   const dispatch = useAppDispatch();
-  const getContentRow: string[][] = getContent.map(row => [row.mainInfo, row.text, row.photo, row.videoUrl]);
 
   const handleSubmit = () => {
     dispatch(setAddNews());
@@ -45,7 +44,7 @@ const News = () => {
                     <button onClick={handleSubmit} className={cls.btn}>
                       <FiPlus width={20} height={20} /> Добавить
                     </button>
-                    <AdminTable columns={columns} rows={getContentRow}/>
+                    <AdminTable columns={columns} rows={rows}/>
                   </div>
                 ) : (
                   <div className={cls.div}>

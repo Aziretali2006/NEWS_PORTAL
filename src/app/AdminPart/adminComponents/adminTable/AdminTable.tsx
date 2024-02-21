@@ -50,7 +50,7 @@ const AdminTable: FC<IProps> = ({ columns, rows }) => {
           </tr>
         </thead>
         <tbody>
-          {getContent.map((row, rowIndex) => (
+          {rows.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {Object.entries(row).map(([key, value], cellIndex) => (
                 <td key={cellIndex} className={cellIndex === 2 ? cls.textCell : ''}>

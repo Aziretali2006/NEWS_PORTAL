@@ -53,9 +53,6 @@ const Main = () => {
           </div>
         </div>
         <div>
-          <Category customMainClass={cls.main_custom} customClass={cls.customClass} categoryContents={categoryContent}/>
-        </div>
-        <div>
           <AboutUs />
         </div>
         <div>

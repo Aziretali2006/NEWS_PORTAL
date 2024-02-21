@@ -3,10 +3,11 @@ import cls from "./AddNews.module.scss";
 import { FcAbout } from "react-icons/fc";
 import { IFile } from '@/app/dashboard/appeal/page';
 import {MdDownload } from "react-icons/md";
-import { IAddNews } from '@/app/interface/IAdminType';
+import { IAddNews, IAddProjects } from '@/app/interface/IAdminType';
 import { useAppDispatch } from '@/app/hook/reduxHooks';
 import { addNews } from '@/app/store/AdminNewsSlice';
-import { useForm } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { addProjects } from '@/app/store/AdminProjectsSlice';
 
 
 interface IProps {
@@ -28,14 +29,20 @@ const AddNews: FC<IProps> = ({name , page}) => {
 
   const dispatch = useAppDispatch();
 
-  const handleAddNews = (data: IAddNews) => {
-    dispatch(addNews(data))
+  const handleAddNews = (data: IAddNews & IAddProjects) => {
+    if(page === "news") {
+      dispatch(addNews(data))
+    } else if (page === "projects") {
+      dispatch(addProjects(data))
+    } else {
+      null
+    }
   }
 
   const {
     register, 
     handleSubmit
-  } = useForm<IAddNews>(
+  } = useForm<IAddProjects & IAddNews>(
     {mode: "onBlur"}
   )
 
@@ -59,7 +66,7 @@ const AddNews: FC<IProps> = ({name , page}) => {
                       <h3>Направлеие</h3>
                       <FcAbout width={20} height={20} color='#FE0C0C'/>
                     </div>
-                    <input type="text" placeholder='образование'/>
+                    <input type="text" placeholder='образование' {...register("education")}/>
                   </div>
                 )
             }
