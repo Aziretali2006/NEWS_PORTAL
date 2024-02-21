@@ -34,8 +34,6 @@ const AddNews: FC<IProps> = ({name , page}) => {
       dispatch(addNews(data))
     } else if (page === "projects") {
       dispatch(addProjects(data))
-    } else {
-      null
     }
   }
 
@@ -56,7 +54,7 @@ const AddNews: FC<IProps> = ({name , page}) => {
                 <h3>Заголовок</h3>
                 <FcAbout width={20} height={20} color='#FE0C0C'/>
               </div>
-              <input type="text" {...register("mainInfo")}/>
+              <input type="text" {...register("data.mainInfo")}/>
             </div>
             {
               page === "projects" &&
@@ -66,7 +64,7 @@ const AddNews: FC<IProps> = ({name , page}) => {
                       <h3>Направлеие</h3>
                       <FcAbout width={20} height={20} color='#FE0C0C'/>
                     </div>
-                    <input type="text" placeholder='образование' {...register("education")}/>
+                    <input type="text" placeholder='образование' {...register("data.education")}/>
                   </div>
                 )
             }
@@ -75,7 +73,7 @@ const AddNews: FC<IProps> = ({name , page}) => {
                 <h3>Текст</h3>
                 <FcAbout width={20} height={20} color='#FE0C0C'/>
               </div>
-              <textarea {...register("text")}/>
+              <textarea {...register("data.text")}/>
             </div>
             <div className={cls.photo_content}>
               <div className={cls.text}>
@@ -103,7 +101,7 @@ const AddNews: FC<IProps> = ({name , page}) => {
                   )}
                 </label>
                 <input
-                  {...register("photo")}
+                  {...register("data.photo")}
                   type="file"
                   ref={inputRef}
                   onChange={handleFileChange}
@@ -117,14 +115,14 @@ const AddNews: FC<IProps> = ({name , page}) => {
                 <h3>Видео</h3>
                 <p>Укажите ссылку на видео</p>
               </div>
-              <input type='text' {...register("videoUrl")}/>
+              <input type='text' {...register("data.videoUrl")}/>
             </div>
             <div className={cls.buttons}>
               <button>Сохранить</button>
-              <button>Назад</button>
             </div>
           </div>
         </form>
+        <button className={cls.btn}>Назад</button>
       </div>
   )
 }

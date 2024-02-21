@@ -4,9 +4,9 @@ import React from 'react';
 import { FaRegUser } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from '@/app/hook/reduxHooks';
 import { Logout, accessToken, username } from '@/app/store/AuthSlice';
+import { useRouter } from 'next/navigation';
 
 import cls from "./Header.module.scss";
-import { useRouter } from 'next/navigation';
 
 const Header = () => {
   const dispatch = useAppDispatch();

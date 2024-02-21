@@ -7,12 +7,7 @@ interface IAdminSlice {
   editableRowIndex: number | null,
   editedRow: string[],
   isLoading: boolean,
-  addContent: {
-    photo: File | null,
-    mainInfo: string, 
-    text: string, 
-    videoUrl: string
-  }
+  addContent: IAddNews | null
   getContent: IAddNews[];
 }
 
@@ -22,13 +17,7 @@ const initialState: IAdminSlice = {
   editedRow: [],
   isLoading: false,
   getContent: [],
-  addContent: {
-
-    photo: null, 
-    mainInfo: "",
-    text: "", 
-    videoUrl: ""
-  }
+  addContent: null
 };
 
 export const addNews = createAsyncThunk(

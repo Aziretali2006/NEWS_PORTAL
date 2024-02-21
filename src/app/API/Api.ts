@@ -1,5 +1,5 @@
 import { instance } from "../config/config";
-import { IAddNews, IAddProjects } from "../interface/IAdminType";
+import { IAddNews, IAddPhoto, IAddProjects } from "../interface/IAdminType";
 import { ILogin, IRegister } from "../interface/IAuthType";
 import { AdminPath, AuthorizationPath } from "./RequestPath";
 
@@ -16,4 +16,7 @@ export const ADD_NEWS = (data: IAddNews) => instance.post(AdminPath.addNews, dat
 
 export const GET_NEWS = () => instance.get(AdminPath.getNews);
 
-export const ADD_PROJECTS = (data: IAddProjects) => instance.post(AdminPath.addProjects , data)
+export const ADD_PROJECTS = (data: IAddProjects) => instance.post(AdminPath.addProjects , data);
+
+export const ADD_PHOTO = (data: IAddPhoto) => instance.post(AdminPath.addPhoto, data)
+

@@ -2,12 +2,12 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IAddProjects } from "../interface/IAdminType";
 import { ADD_PROJECTS } from "../API/Api";
 
-const initialState: IAddProjects = {
-  mainInfo: "", 
-  text: "", 
-  photo: null, 
-  videoUrl: "", 
-  education: ""
+interface IProjects {
+  data: null | IAddProjects
+}
+
+const initialState: IProjects = {
+  data: null
 };
 
 export const addProjects = createAsyncThunk(
@@ -28,12 +28,10 @@ export const ProjectSlice =  createSlice({
   reducers: {}, 
   extraReducers(builder) {
     builder 
-      .addCase(addProjects.fulfilled.type, (state , action: PayloadAction<IAddProjects>) => {
-        state.education = action.payload.education;
-        state.mainInfo = action.payload.mainInfo;
-        state.photo = action.payload.photo;
-        state.text = action.payload.text;
-        state.videoUrl = action.payload.videoUrl
+      .addCase(addProjects.fulfilled.type, (state , action: PayloadAction<IProjects>) => {
+        state.data = action.payload.data
       })
   },
-})
+});
+
+export default ProjectSlice.reducer;

@@ -3,11 +3,15 @@ import { combineReducers } from "redux";
 import ProjectSlice from "./ProjectSlice";
 import AdminNewsSlice from "./AdminNewsSlice";
 import AuthSlice from "./AuthSlice";
+import AdminPhotoSlice from "./AdminPhotoSlice";
+import AdminProjectsSlice from "./AdminProjectsSlice";
 
 const rootReducer = combineReducers({
   ProjectSlice,
   AdminNewsSlice,
-  AuthSlice
+  AuthSlice, 
+  AdminPhotoSlice, 
+  AdminProjectsSlice
 });
 
 export const setupStore = () => {
