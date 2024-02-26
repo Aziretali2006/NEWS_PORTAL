@@ -7,8 +7,12 @@ import Footer from '@/app/components/footer/Footer';
 import { AppealAttentionList, AppealListObject } from '@/app/utils/AppealList';
 import { RiArrowRightSFill } from "react-icons/ri";
 import { MdErrorOutline , MdDownload } from "react-icons/md";
+import { useForm } from 'react-hook-form';
 
 import cls from "./Appeal.module.scss";
+import { IAddInfo } from '@/app/interface/IAdminType';
+import { AddInfo } from '@/app/store/ClientAddInfo';
+import { useAppDispatch } from '@/app/hook/reduxHooks';
 
 export interface IFile {
   file: File,
@@ -17,6 +21,7 @@ export interface IFile {
 const Appeal = () => {
   const [selectedFile, setSelectedFile] = React.useState<IFile | null>(null);
   const inputRef = React.useRef<HTMLInputElement>(null);
+  const dispatch = useAppDispatch();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -24,6 +29,17 @@ const Appeal = () => {
       setSelectedFile({ file });
     }
   };
+
+  const {
+    register, 
+    handleSubmit, 
+  } = useForm<IAddInfo>({
+    mode: "onBlur"
+  });
+
+  const handleInfo = async (info: IAddInfo) => {
+    await dispatch(AddInfo(info));
+  }
 
   return (
     <div>
@@ -70,25 +86,25 @@ const Appeal = () => {
               </div>
             </div>
             <div className={cls.form_content}>
-              <form className={cls.form}>
+              <form onSubmit={handleSubmit(handleInfo)} className={cls.form}>
                 <div className={cls.form_box}>
                   <div className={cls.left_form_content}>
                     <div className={cls.input_container}>
-                      <input className={cls.input_field} type="text" id="username" placeholder=" " />
+                      <input className={cls.input_field} {...register("username")} type="text" id="username" placeholder=" " />
                       <label className={cls.label} htmlFor="username">ФИО</label>
                     </div>
                     <div className={cls.input_container}>
-                      <input className={cls.input_field} type='text' placeholder=''/>
+                      <input className={cls.input_field} {...register("phoneNumber")} type='text' placeholder=''/>
                       <label className={cls.label} htmlFor="username">Номер телефона</label>
                     </div>
                     <div className={cls.input_container} >
-                      <input className={cls.input_field} type='email' placeholder=''/>
+                      <input className={cls.input_field} {...register("email")} type='email' placeholder=''/>
                       <label className={cls.label} htmlFor="username">Электронная почта</label>
                     </div>
                   </div>
                   <div className={cls.right_form_content}>
                     <div>
-                      <textarea className={cls.textarea} placeholder='Напишите сообщение'/>
+                      <textarea className={cls.textarea} {...register("message")} placeholder='Напишите сообщение'/>
                     </div>
                     <div>
                       <label htmlFor="file">

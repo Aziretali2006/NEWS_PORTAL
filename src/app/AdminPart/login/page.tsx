@@ -40,7 +40,10 @@ const Login = () => {
         </div>
         <div className={cls.login_btn}>
           <button>Войти</button>
-          <a href="">Забыли пароль?</a>
+          <div className={cls.inline}>
+            <a href="">Забыли пароль?</a>
+            <a href='/AdminPart/register'>Зарегистрироваться</a>
+          </div>
         </div>
       </form>
     </div>

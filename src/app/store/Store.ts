@@ -5,13 +5,15 @@ import AdminNewsSlice from "./AdminNewsSlice";
 import AuthSlice from "./AuthSlice";
 import AdminPhotoSlice from "./AdminPhotoSlice";
 import AdminProjectsSlice from "./AdminProjectsSlice";
+import ClientAddInfo from "./ClientAddInfo";
 
 const rootReducer = combineReducers({
   ProjectSlice,
   AdminNewsSlice,
   AuthSlice, 
   AdminPhotoSlice, 
-  AdminProjectsSlice
+  AdminProjectsSlice, 
+  ClientAddInfo
 });
 
 export const setupStore = () => {

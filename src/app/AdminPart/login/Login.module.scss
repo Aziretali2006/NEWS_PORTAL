@@ -4,6 +4,16 @@
   place-items: center;
   margin-top: 300px;
 
+  .inline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    :nth-child(2) {
+      color: var(--btn-and-leaves-color);
+    }
+  }
+
   &_name {
     display: flex;
     align-items: center;

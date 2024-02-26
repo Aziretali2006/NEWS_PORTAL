@@ -26,10 +26,8 @@ export interface IAddPhoto {
 };
 
 export interface IAddInfo {
-  info: {
-    message: string , 
-    phoneNumber: string, 
-    username: string, 
-    email: string
-  };
+  message: string , 
+  phoneNumber: string, 
+  username: string, 
+  email: string
 };
