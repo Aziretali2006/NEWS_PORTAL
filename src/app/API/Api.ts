@@ -1,7 +1,7 @@
 import { instance } from "../config/config";
 import { IAddNews, IAddPhoto, IAddProjects } from "../interface/IAdminType";
 import { ILogin, IRegister } from "../interface/IAuthType";
-import { AdminPath, AuthorizationPath } from "./RequestPath";
+import { AdminPath, AuthorizationPath, ClientPath } from "./RequestPath";
 
 
 export const POST_REGISTER = (data: IRegister) => instance.post(AuthorizationPath.register, data);
@@ -20,3 +20,4 @@ export const ADD_PROJECTS = (data: IAddProjects) => instance.post(AdminPath.addP
 
 export const ADD_PHOTO = (data: IAddPhoto) => instance.post(AdminPath.addPhoto, data)
 
+export const ADD_INFO = (info) => instance.post(ClientPath.addInfo , info);

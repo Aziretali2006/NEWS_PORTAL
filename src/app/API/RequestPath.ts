@@ -12,4 +12,8 @@ export const AdminPath = {
   getNews: "/getNews",
   addProjects: "/addProjects",
   addPhoto: "/addPhoto",
+};
+
+export const ClientPath = {
+  addInfo: "/addInfo",
 }

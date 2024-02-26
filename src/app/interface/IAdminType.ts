@@ -23,4 +23,13 @@ export interface IAddPhoto {
     mainInfo: string, 
     photo: File | string,
   } | undefined
-}
+};
+
+export interface IAddInfo {
+  info: {
+    message: string , 
+    phoneNumber: string, 
+    username: string, 
+    email: string
+  };
+};

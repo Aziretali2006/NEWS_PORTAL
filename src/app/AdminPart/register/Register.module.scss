@@ -4,6 +4,12 @@
   place-items: center;
   margin-top: 300px;
 
+  .error {
+    color: rgb(227, 7, 7);
+    font-size: 23px;
+    text-align: center;
+  }
+
   &_name {
     display: flex;
     align-items: center;

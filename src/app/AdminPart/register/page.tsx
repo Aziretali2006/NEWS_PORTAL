@@ -15,6 +15,7 @@ import cls from "./Register.module.scss";
 const Register = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const [error , setError] = React.useState<string | null>(null)
 
   const {
     register,
@@ -24,8 +25,12 @@ const Register = () => {
   });
 
   const handleSubmitButton = async (data: IRegister) => {
-    await dispatch(PostRegister(data))
-    router.push("/AdminPart/login")
+    if(data && data.email && data.password && data.username) {
+      await dispatch(PostRegister(data))
+      router.push("/AdminPart/login")
+    } else {
+      setError("Заполните все поля!")
+    }
   }
 
   React.useEffect(() => {
@@ -47,6 +52,9 @@ const Register = () => {
           <CiLock />
           <input type='password' placeholder='Пароль' {...register("password")}/>
         </div>
+        {
+          error && <p className={cls.error}>{error}</p>
+        }
         <div className={cls.login_btn}>
           <button>Войти</button>
           <a href="">Забыли пароль?</a>
